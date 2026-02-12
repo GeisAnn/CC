@@ -19,20 +19,25 @@ public class MealServlet extends HttpServlet {
     private static final Logger log = getLogger(MealServlet.class);
     private final MealStorage storage = new InMemoryMealStorage();
 
-    {
+    public void init() throws ServletException {
         MealsUtil.meals.forEach(storage::create);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String id = request.getParameter("id");
+        String idParam = request.getParameter("id");
         Meal meal = new Meal(
-                id.isEmpty() ? null : Integer.valueOf(id),
+                idParam.isEmpty() ? null : Integer.valueOf(idParam),
                 LocalDateTime.parse(request.getParameter("dateTime")),
                 request.getParameter("description"),
                 Integer.parseInt(request.getParameter("calories"))
         );
-        storage.create(meal);
+        Integer id = meal.getId();
+        if (id == null) {
+            storage.create(meal);
+        } else {
+            storage.update(meal);
+        }
         response.sendRedirect("meals");
     }
 
