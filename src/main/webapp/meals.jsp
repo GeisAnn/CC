@@ -25,19 +25,19 @@
         <input type="hidden" name="action" value="filter">
         <dl>
             <dt>От даты (включая)</dt>
-            <dd><input type="date" value="${param.startDate}" name="startDate"></dd>
+            <dd><input type="date" value="${param.fromDate}" name="fromDate"></dd>
         </dl>
         <dl>
             <dt>До даты (включая)</dt>
-            <dd><input type="date" value="${param.endDate}" name="endDate"></dd>
+            <dd><input type="date" value="${param.toDate}" name="toDate"></dd>
         </dl>
         <dl>
             <dt>От времени (включая)</dt>
-            <dd><input type="time" value="${param.startTime}" name="startTime"></dd>
+            <dd><input type="time" value="${param.fromTime}" name="fromTime"></dd>
         </dl>
         <dl>
             <dt>До времени (исключая)</dt>
-            <dd><input type="time" value="${param.endTime}" name="endTime"></dd>
+            <dd><input type="time" value="${param.toTime}" name="toTime"></dd>
         </dl>
         <button type="submit">Отфильтровать</button>
     </form>

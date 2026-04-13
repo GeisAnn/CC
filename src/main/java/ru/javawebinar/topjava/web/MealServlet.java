@@ -70,11 +70,11 @@ public class MealServlet extends HttpServlet {
                 request.getRequestDispatcher("/mealForm.jsp").forward(request, response);
                 break;
             case "filter":
-                LocalDate startDate = LocalDate.parse(request.getParameter("startDate"));
-                LocalDate endDate = LocalDate.parse(request.getParameter("endDate"));
-                LocalTime startTime = LocalTime.parse(request.getParameter("startTime"));
-                LocalTime endTime = LocalTime.parse(request.getParameter("endTime"));
-                request.setAttribute("meals", controller.getFiltered(startDate,  endDate, startTime, endTime));
+                LocalDate fromDate = LocalDate.parse(request.getParameter("startDate"));
+                LocalDate toDate = LocalDate.parse(request.getParameter("endDate"));
+                LocalTime fromTime = LocalTime.parse(request.getParameter("startTime"));
+                LocalTime toTime = LocalTime.parse(request.getParameter("endTime"));
+                request.setAttribute("meals", controller.getFiltered(fromDate,  toDate, fromTime, toTime));
                 request.getRequestDispatcher("/meals.jsp").forward(request, response);
                 break;
             case "all":
